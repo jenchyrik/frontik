@@ -1,0 +1,128 @@
+.firstslide {
+  height: 100vh;
+  background: linear-gradient(to right, #4b3862, #d45b78);
+  
+}
+.container {
+  max-width: 80%;
+  margin: auto;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+.button {
+  transition: transform 0.3s;
+  width: 184px;
+  height: 50px;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 10px;
+  @media (max-width: 600px) {
+    width: 92px;
+    height: 25px;
+    padding: 5px 10px;
+    font-size: 13px;
+    margin: 5px;
+  }
+}
+.cat {
+  width: 48%;
+  height: auto;
+
+  
+  @media (max-width: 1080px) {
+    width: 363px;
+    height: 214px;
+  }
+  @media (max-width: 370px) {
+    display: none;
+  }
+}
+.button:hover {
+  transition: transform 0.3s;
+  transform: scale(1.1);
+}
+.centerimg {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.h1 {
+  color: #fcfcfc;
+  font-size: 64px;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  @media (max-width: 1080px) {
+    font-size: 32px;
+  }
+}
+.h2 {
+  font-size: 24px;
+  color: #f2f2f2;
+  margin: 15px;
+  text-align: center;
+  @media (max-width: 1080px) {
+    font-size: 16px;
+  }
+}
+.popr {
+  transition: transform 0.3s;
+  background-color: #d75c78;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 36px;
+  width: 370px;
+  height: 82px;
+  box-shadow: 10px 10px 10px hwb(0 0% 100% / 0.25);
+  @media (max-width: 1080px) {
+    font-size: 24px;
+    width: 300px;
+    height: 60px;
+  }
+}
+.popr:hover {
+  transition: transform 0.3s;
+  transform: scale(1.1);
+}
+
+.puziri {
+  position: absolute;
+  top: 774px;
+  left: 128px;
+  z-index: 2;
+  @media (max-width: 1280px) {
+    left: 0px;
+  }
+  @media (max-width: 1200px) {
+    display: none;
+  }
+}
+.puziri1 {
+  position: absolute;
+  top: 821px;
+  right: 28px;
+  z-index: 2;
+  @media (max-width: 1200px) {
+    display: none;
+  }
+}

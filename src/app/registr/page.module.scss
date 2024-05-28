@@ -1,0 +1,123 @@
+.slide {
+  background: linear-gradient(to bottom right, #4b3862 60%, #d45b78 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.container {
+  max-width: 720px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 800px) {
+    width: 350px;}
+  @media (max-width: 380px) {
+    width: 300px;
+  }
+}
+.div1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.div2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.h1 {
+  padding-top: 100;
+  color: #fcfcfc;
+  font-size: 48px;
+  @media (max-width: 800px) {
+    font-size: 24px;
+    padding-top: 55px;
+  }
+  @media (max-width: 380px) {
+    padding-top: 45px;
+  }
+}
+.h2 {
+  margin-top: 10;
+  color: #fcfcfc;
+  font-size: 24px;
+  @media (max-width: 800px) {
+    font-size: 18px;
+    
+  }
+  // @media (max-width: 380px) {
+  //   margin-top: 45px;
+  // }
+}
+.inputdiv {
+  height: 725px;
+  // @media (max-width:800px) {
+  //   margin-top: 50px;    
+  // }
+  
+  // @media (max-width: 380px) {
+  //   margin-top: 40px;
+  // }
+}
+.input {
+  transition: transform 0.3s;
+  width: 100%;
+  height: 73px;
+  font-size: 24px;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: #333;
+}
+
+.input:focus {
+  transition: transform 0.3s;
+  outline: none;
+  border: 3px solid #d75c78;
+}
+
+.inputtxt {
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #fcfcfc;
+}
+.button {
+  margin: auto;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  transition: transform 0.3s;
+  background-color: #d75c78;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 36px;
+  width: 508px;
+  height: 75px;
+  box-shadow: 10px 10px 10px hwb(0 0% 100% / 0.25);
+  @media (max-width: 800px) {
+    width: 300px;
+    font-size: 24px;
+  }
+}
+.button:hover {
+  transition: transform 0.3s;
+  transform: scale(1.1);
+}
+.linklogin {
+  transition: transform 0.3s;
+  justify-content: right;
+  color: #fff;
+  font-size: 24px;
+  font-family: roboto;
+  text-decoration: none;
+  z-index: 1;
+}
+.linklogin:hover {
+  transition: transform 0.3s;
+  color: #d1b8f0;
+}
+.lr{
+  text-decoration: none; 
+  color: inherit;
+  }
