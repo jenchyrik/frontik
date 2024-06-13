@@ -1,10 +1,32 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import BurgerMenu from '../BurgerMenu/page'
 import '../globals.css'
 import styles from './page.module.scss'
+import { useGetUserQuery } from '@/src/hooks/useGetUserQuery'
 
-export default function Home() {
+const Line: React.FC = () => {
+  const { data, isError, isLoading } = useGetUserQuery()
+
+  if (isLoading) return <div>Loading...</div>
+  if (isError) return <div>Error loading userdata</div>
+  // const { data, isLoading, isError } = useGetProductQuery();
+  //   console.log(data)
+
+  //   // Если данные загружаются, отобразите сообщение о загрузке
+  //   if (isLoading) {
+  //       return <div>Loading...</div>;
+  //   }
+
+  //   // Если произошла ошибка при загрузке данных, отобразите сообщение об ошибке
+  //   if (isError) {
+  //       return <div>Error fetching </div>;
+  //   }
+
+
+    
+
   return (
     <html>
       <head>
@@ -47,7 +69,7 @@ export default function Home() {
               <div className={styles.topdiv}>
                 <h1 className={styles.h1}>Лента</h1>
                 <div className={styles.logoutdiv}>
-                  <p>Вы вошли как vasilenko@gmail.com</p>
+                  <p>Вы вошли как {data.email}</p>
                   <button className={styles.logout}>Выйти</button>
                 </div>
               </div>
@@ -61,14 +83,53 @@ export default function Home() {
                 <div className={styles.balance}>
                   <p>Баланс</p>
                   <div className={styles.tocen}>
-                    <p>10 tocens</p>
+                    <p>{data.tokens} tokens</p>
                   </div>
-                  <p>Генераций: 0</p>
+                  <p>Генераций: {(data.tokens/10)|0}</p>
                   <Link className={styles.balancebutton} href="#">
                     Пополнить
                   </Link>
                 </div>
               </div>
+              
+              <div className={styles.productcard}>
+                <div className={styles.cardcontainer}>
+                  <div className={styles.topdivpc}>
+                    <div className={styles.aboutuser}>
+                      <Image
+                      
+                        src="/assets/victor.png"
+                        alt="victor"
+                        height={75}
+                        width={75}
+                      />
+                      <div className={styles.topdiv1pc}>
+                        <h1 className={styles.username}>Владимир Иванов</h1>
+                        <h2 className={styles.date}>28.05.2024 12:00</h2>
+                      </div>
+                    </div>
+                    <h1 className={styles.productname}>Мишка в лесу</h1>
+                  </div>
+                  <div className={styles.audiodiv}>
+                    <audio controls className={styles.audio}>
+                      <source src="/assets/audio.mp3" type="audio/mpeg" />
+                    </audio>
+                  </div>
+                  <h3 className={styles.description}>
+                    Короткие истории о лесных зверятах для самых маленьких. В
+                    этой книге ребята познакомятся с главными героями — мишкой
+                    Мишей и его друзьями — и узнают их характеры. А еще дети
+                    научатся дружить, поймут, что такое храбрость и доброта и
+                    почему нехорошо жадничать. После каждой истории есть
+                    небольшое стихотворение, которое можно выучить. В конце
+                    книги бабушка Сова рассказывает всем сказку, а мишка Миша
+                    придумывает доброе стихотворение, под которое так приятно
+                    засыпать
+                  </h3>
+                </div>
+              </div>
+
+
               <div className={styles.productcard}>
                 <div className={styles.cardcontainer}>
                   <div className={styles.topdivpc}>
@@ -213,42 +274,16 @@ export default function Home() {
                   </h3>
                 </div>
               </div>
-              <div className={styles.productcard}>
-                <div className={styles.cardcontainer}>
-                  <div className={styles.topdivpc}>
-                    <div className={styles.aboutuser}>
-                      <Image
-                      
-                        src="/assets/victor.png"
-                        alt="victor"
-                        height={75}
-                        width={75}
-                      />
-                      <div className={styles.topdiv1pc}>
-                        <h1 className={styles.username}>Владимир Иванов</h1>
-                        <h2 className={styles.date}>28.05.2024 12:00</h2>
-                      </div>
-                    </div>
-                    <h1 className={styles.productname}>Мишка в лесу</h1>
+
+              {/* <div>
+                {data?.map((productItem) => (
+                  <div key={productItem.id}>
+                      <p>
+                          {productItem.name}
+                      </p>
                   </div>
-                  <div className={styles.audiodiv}>
-                    <audio controls className={styles.audio}>
-                      <source src="/assets/audio.mp3" type="audio/mpeg" />
-                    </audio>
-                  </div>
-                  <h3 className={styles.description}>
-                    Короткие истории о лесных зверятах для самых маленьких. В
-                    этой книге ребята познакомятся с главными героями — мишкой
-                    Мишей и его друзьями — и узнают их характеры. А еще дети
-                    научатся дружить, поймут, что такое храбрость и доброта и
-                    почему нехорошо жадничать. После каждой истории есть
-                    небольшое стихотворение, которое можно выучить. В конце
-                    книги бабушка Сова рассказывает всем сказку, а мишка Миша
-                    придумывает доброе стихотворение, под которое так приятно
-                    засыпать
-                  </h3>
-                </div>
-              </div>
+                ))}
+              </div> */}
             </div>
           </div>
         </div>
@@ -256,3 +291,4 @@ export default function Home() {
     </html>
   )
 }
+export default Line

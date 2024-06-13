@@ -1,10 +1,17 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import '../globals.css'
 import styles from './page.module.scss'
 import BurgerMenu from '../BurgerMenu/page';
+import { useGetUserQuery } from '../../../src/hooks/useGetUserQuery'
 
-export default function Home() {
+const Generation: React.FC = () => {
+  const { data, isError, isLoading } = useGetUserQuery()
+
+  if (isLoading) return <div>Loading...</div>
+  if (isError) return <div>Error loading userdata</div>
+  
   return (
     <html>
       <head>
@@ -47,7 +54,7 @@ export default function Home() {
               <div className={styles.topdiv}>
                 <h1 className={styles.h1}>Генерация Аудио</h1>
                 <div className={styles.logoutdiv}>
-                  <p>Вы вошли как vasilenko@gmail.com</p>
+                  <p>Вы вошли как {data.email}</p>
                   <button className={styles.logout}>Выйти</button>
                 </div>
               </div>
@@ -75,9 +82,9 @@ export default function Home() {
                 <div className={styles.balance}>
                   <p>Баланс</p>
                   <div className={styles.tocen}>
-                    <p>10 tocens</p>
+                    <p>{data.tokens} tokens</p>
                   </div>
-                  <p>Генераций: 0</p>
+                  <p>Генераций: {(data.tokens/10)|0}</p>
                   <Link className={styles.balancebutton} href="#">
                     Пополнить
                   </Link>
@@ -98,7 +105,7 @@ export default function Home() {
     </html>
   )
 }
-
+export default Generation
 
 
 

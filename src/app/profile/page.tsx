@@ -1,10 +1,18 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import '../globals.css'
 import styles from './page.module.scss'
+import { useGetUserQuery } from '../../../src/hooks/useGetUserQuery'
 import BurgerMenu from '../BurgerMenu/page'
 
-export default function Home() {
+const Profile: React.FC = () => {
+  const { data, isError, isLoading } = useGetUserQuery()
+
+  if (isLoading) return <div>Loading...</div>
+  if (isError) return <div>Error loading userdata</div>
+
   return (
     <html>
       <head>
@@ -50,7 +58,7 @@ export default function Home() {
               <div className={styles.topdiv}>
                 <h1 className={styles.h1}>Профиль</h1>
                 <div className={styles.logoutdiv}>
-                  <p>Вы вошли как vasilenko@gmail.com</p>
+                  <p>Вы вошли как {data.email}</p>
                   <button className={styles.logout}>Выйти</button>
                 </div>
               </div>
@@ -62,21 +70,33 @@ export default function Home() {
                   width={400}
                   className={styles.photoprofile}
                 />
-                <div className={styles.nofotodiv}>
+                {/* <div>
+                {
+              <div key={data.id} >
+                  <div>
+                    <h1 className={styles.promoh1}>{data.name}</h1>
+                    <h2 className={styles.promoh2}>{data.email}</h2>
+                  </div>
+                
+              </div>
+            }
+                </div > */}
+
+                <div key={data.id} className={styles.nofotodiv}>
                   <div className={styles.profiletext}>
-                    <h1 className={styles.name}>Владимир Иванов</h1>
-                    <h2 className={styles.username}>ivanov_12_05</h2>
+                    <h1 className={styles.name}>{data.name}</h1>
+                    <h2 className={styles.username}>{data.username}</h2>
                     <div className={styles.userinfodiv}>
                       <p>E-mail:</p>
-                      <p>ivanov_vladimir@gmailmcom</p>
+                      <p>{data.email}</p>
                     </div>
                     <div className={styles.userinfodiv}>
                       <p>Генераций:</p>
-                      <p>0</p>
+                      <p>{(data.tokens/10)|0}</p>
                     </div>
                     <div className={styles.userinfodiv}>
                       <p>Баланс:</p>
-                      <p>10tocens</p>
+                      <p>{data.tokens}</p>
                     </div>
                   </div>
                   <div className={styles.password}>
@@ -102,3 +122,4 @@ export default function Home() {
     </html>
   )
 }
+export default Profile

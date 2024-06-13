@@ -102,22 +102,7 @@ const Main: React.FC = () => {
                 </div>
               </div>
             ))}
-          {/* <div className={styles.promo2}>
-            <div className={styles.containerpromo}>
-              <h1 className={styles.promoh1}>
-                -10% при оплате более <br />5 шт
-              </h1>
-              <h2 className={styles.promoh2}>
-                Плати за наш сервис выгодно
-                <br /> Создавай несколько дорожек и
-                <br /> получай дополнительные выгоды
-                <br /> уже сегодня
-              </h2>
-              <Link className={styles.link} href="/registr">
-                <button className={styles.promobutton}>Попробовать</button>
-              </Link>
-            </div>
-          </div> */}
+
         </div>
       </div>
       <Image
